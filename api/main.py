@@ -39,6 +39,10 @@ async def predict(
     image = read_file_as_image(await file.read())
     img_batch = np.expand_dims(image, 0)
     
+    # json_data= {
+    #     "instances": img_batch.tolist()
+    # }
+
     predictions = MODEL.predict(img_batch)
 
     predicted_class = CLASS_NAMES[np.argmax(predictions[0])]
